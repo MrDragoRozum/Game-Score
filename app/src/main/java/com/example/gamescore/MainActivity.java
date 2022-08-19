@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("MainActivity", "onStart started!");
     }
 
-    // Появляется фокус (пользователь может с ним взаимодействовать
+    // Появляется фокус (пользователь может с ним взаимодействовать)
     @Override
     protected void onResume() {
         super.onResume();
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         if (updateScore == 1) score2++;
         textViewScore2.setText(String.valueOf(score2));
     }
-    // Сохранение указанных элементов, при первом разе ничего нет (null), но при втором запуске
+    // Сохранение указанных элементов, при первом раз ничего нет (null), но при втором запуске
     // onCreate() будет уже хранить
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
