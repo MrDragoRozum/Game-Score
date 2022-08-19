@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewScore1;
     private TextView textViewScore2;
 
+    // Создается активити
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("MainActivity", "onCreate() created!");
 
-        if(savedInstanceState != null) {
+        if (savedInstanceState != null) {
             score1 = savedInstanceState.getInt("score1");
             score2 = savedInstanceState.getInt("score2");
         }
@@ -44,12 +45,35 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Запускается, если активити был свернут и снова открыт
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("MainActivity", "onRestart started!");
+    }
+
+    // Запускается активти
     @Override
     protected void onStart() {
         super.onStart();
         Log.d("MainActivity", "onStart started!");
     }
 
+    // Появляется фокус (пользователь может с ним взаимодействовать
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("MainActivity", "onResume()");
+    }
+
+    // Теряется фокус (пользователь не может с ним взаимодействовать)
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("MainActivity", "onPause()");
+    }
+
+    // Активти останавливается
     @Override
     protected void onStop() {
         super.onStop();
@@ -57,15 +81,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateScore1(int updateScore) {
-        if(updateScore == 1) score1++;
+        if (updateScore == 1) score1++;
         textViewScore1.setText(String.valueOf(score1));
     }
 
     private void updateScore2(int updateScore) {
-        if(updateScore == 1) score2++;
+        if (updateScore == 1) score2++;
         textViewScore2.setText(String.valueOf(score2));
     }
-
+    // Сохранение указанных элементов, при первом разе ничего нет (null), но при втором запуске
+    // onCreate() будет уже хранить
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -75,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("MainActivity", "onSaveInstanceState() saved!");
     }
 
+    // Уничтожение активити
     @Override
     protected void onDestroy() {
         super.onDestroy();
